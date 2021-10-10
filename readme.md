@@ -1,6 +1,6 @@
-[![Generic badge](https://img.shields.io/badge/STATE-ALPHA-29586b.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/UPDATED-10/10/2021-29586b.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/CURRENT_VERSION-V0.0-29586b.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/STATE-ALPHA-54AEFF.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/UPDATED-10/10/2021-54AEFF.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/CURRENT_VERSION-V0.0-54AEFF.svg)](https://shields.io/)
 
 # Volvado de imagen
 Realiza el volcado de imagen automaticamente.
