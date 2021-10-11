@@ -114,7 +114,8 @@ if [ $sku_check == "true" ]
         # elimina registro de volcado anterior si existe
         if [ -e /var/log/clonezilla.log ]
             then
-                rm -y /var/log/clonezilla.log
+                sudo rm -f /var/log/clonezilla.log
+                printf "[${m_info}] Se limpio el registro de clonados anteriores.\n"
         fi
 
         # volcado de imagen
@@ -181,9 +182,9 @@ if [ $sku_check == "true" ]
         printf "[${m_info}] Validaciones no superadas = ${error_counter}.\n"
         if [ $error_counter != 0 ]
             then
-                printf "\033[5;31m" && figlet -c -f big F A I L && printf "\033[0m \n"
+                printf "\n\033[5;31m" && figlet -c -f big F A I L && printf "\033[0m \n"
             else
-                printf "\033[5;32m" && figlet -c -f big P A S S && printf "\033[0m \n"
+                printf "\n\033[5;32m" && figlet -c -f big P A S S && printf "\033[0m \n"
         fi
 
         #apagado

@@ -1,12 +1,13 @@
 [![Generic badge](https://img.shields.io/badge/STATE-BETA-54AEFF.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/UPDATED-10/10/2021-54AEFF.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/CURRENT_VERSION-V0.0-54AEFF.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/CURRENT_VERSION-V1.0-54AEFF.svg)](https://shields.io/)
 
 # Sistema Automatico de Volvado de Imagen
 Realiza el volcado de imagen automaticamente.
 
 ## Compativilidad asegurada
 - ASUS X515EA
+- NOBLEX SF20GM7
 
 ## Dependencias
 - gnome-terminal
