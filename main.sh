@@ -111,6 +111,12 @@ if [ $sku_check == "true" ]
 		# mensaje volcado de imagen
 		printf "[${m_info}] Iniciando volcado de imagen...\n"
 
+        # elimina registro de volcado anterior si existe
+        if [ -e /var/log/clonezilla.log ]
+            then
+                rm -y /var/log/clonezilla.log
+        fi
+
         # volcado de imagen
         image_name=$(cat /home/partimag/image.folder.cfg)
         gnome-terminal --full-screen --hide-menubar --profile Default --wait -- $dir_base/makeclone.sh $image_name $targetDisk
@@ -176,13 +182,12 @@ if [ $sku_check == "true" ]
         if [ $error_counter != 0 ]
             then
                 printf "\033[5;31m" && figlet -c -f big F A I L && printf "\033[0m \n"
-                printf "[${m_info}] Presione una tecla para apagar el equipo...\n"
             else
                 printf "\033[5;32m" && figlet -c -f big P A S S && printf "\033[0m \n"
-                printf "[${m_info}] Presione una tecla para apagar el equipo...\n"
         fi
 
         #apagado
+        printf "[${m_info}] Presione una tecla para apagar el equipo...\n"
         read -s -n 1 -p "" null
         shutdown now
 

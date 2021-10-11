@@ -7,7 +7,7 @@ printf "\033[5;33m" && figlet -c -f big CLONING... && printf "\033[0m \n"
 printf "\n\n --- IMAGE ${1} \n --- TARGET ${2} \n\n"
 
 # volcado de imagen
-#sudo /usr/sbin/ocs-sr -g auto -e1 auto -e2 -r -j2 -batch -scr -p true restoredisk ${1} ${2}     #### MARK AS COMMENT FOR DEBUG !! ####
+sudo /usr/sbin/ocs-sr -g auto -e1 auto -e2 -r -j2 -batch -scr -p true restoredisk ${1} ${2}     #### ¡¡ MARK AS COMMENT FOR DEBUG !! ####
 
 # esperando para salir
 sleep 10
