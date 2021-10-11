@@ -8,6 +8,7 @@ Realiza el volcado de imagen automaticamente.
 ## Compativilidad asegurada
 - ASUS X515EA
 - NOBLEX SF20GM7
+- SEMMAX C116EP-G4S-01
 
 ## Dependencias
 - gnome-terminal

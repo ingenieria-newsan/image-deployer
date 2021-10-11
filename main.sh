@@ -63,8 +63,19 @@ sudo mount /dev/${targetDiskPartition3} /home/targetDisk
 sleep .5
 
 # chequea que el sku indicado en el disco target coincida con el configurado
-imageSkuConfig=$(cat /home/partimag/image.sku.cfg) > /dev/null 2>&1
-imageSkuDisk=$(cat /home/targetDisk/image.sku.cfg) > /dev/null 2>&1
+if [ -e /home/partimag/image.sku.cfg ]
+    then
+        imageSkuConfig=$(cat /home/partimag/image.sku.cfg) > /dev/null 2>&1
+    else
+        imageSkuConfig=config-file-not-found
+fi
+
+if [ -e /home/targetDisk/image.sku.cfg ]
+    then
+        imageSkuDisk=$(cat /home/targetDisk/image.sku.cfg) > /dev/null 2>&1
+    else
+        imageSkuDisk=disk-file-not-found
+fi
 
 printf "[${m_info}] imageSkuConfig=${imageSkuConfig} imageSkuDisk=${imageSkuDisk}.\n"
 printf "[${m_warn}] Validación de SKU "
@@ -76,7 +87,7 @@ if [ $imageSkuConfig = $imageSkuDisk ]
 		sku_check=true
 	else
         printf "${m_fail}\n"
-        if [ -e /home/targetDisk/image.sku.force.cfg ]
+        if [ -e /home/partimag/image.sku.force.cfg ]
             then
                 printf "[${m_warn}] FORCE SKU PASS OPTION FOUND ALL DATA IN TARGET DISK WILL BE DELETED.\n"
                 sleep 10
