@@ -47,10 +47,10 @@ sleep .5
 if [ $targetDisk == "nvme0n1" ]
     then
         targetDiskPartition3=nvme0n1p3
-        printf "[${m_info}] Se aplicó corrección de nombre a disco nvme.\n"
     else
         targetDiskPartition3="$targetDisk"3
 fi
+printf "[${m_info}] Se aplicó corrección de nombre a la partición $targetDiskPartition3.\n"
 
 sleep .5
 
@@ -76,7 +76,7 @@ if [ $imageSkuConfig = $imageSkuDisk ]
 		sku_check=true
 	else
         printf "${m_fail}\n"
-        if [ -e /home/targetDisk/image.sku.force ]
+        if [ -e /home/targetDisk/image.sku.force.cfg ]
             then
                 printf "[${m_warn}] FORCE SKU PASS OPTION FOUND ALL DATA IN TARGET DISK WILL BE DELETED.\n"
                 sleep 10
