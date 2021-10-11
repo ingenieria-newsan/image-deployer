@@ -1,4 +1,4 @@
-[![Generic badge](https://img.shields.io/badge/STATE-BETA-54AEFF.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/STATE-RTM-54AEFF.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/UPDATED-10/10/2021-54AEFF.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/CURRENT_VERSION-V1.0-54AEFF.svg)](https://shields.io/)
 
