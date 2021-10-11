@@ -23,7 +23,7 @@ systemDisk=$(lsblk -no pkname $(findmnt -n / | awk '{ print $2 }'))
 sudo umount /dev/${systemDisk}3 > /dev/null 2>&1
 sudo mount /dev/${systemDisk}3 /home/partimag
 
-sleep .1
+sleep .5
 
 # chequea que nombre tiene el disco targetDisk
 targetDisk=$(cat /home/partimag/image.target.cfg)
@@ -41,7 +41,7 @@ if [ $systemDisk = $targetDisk ]
 		printf "${m_pass}\n"
 fi
 
-sleep .1
+sleep .5
 
 # correccion de nombre para discos nvme
 if [ $targetDisk == "nvme0n1" ]
@@ -52,7 +52,7 @@ if [ $targetDisk == "nvme0n1" ]
         targetDiskPartition3="$targetDisk"3
 fi
 
-sleep .1
+sleep .5
 
 # monta particiones de destino
 printf "[${m_info}] Montando particiones de destino.\n"
@@ -60,7 +60,7 @@ sudo umount /home/targetDisk > /dev/null 2>&1
 sudo mkdir /home/targetDisk > /dev/null 2>&1
 sudo mount /dev/${targetDiskPartition3} /home/targetDisk
 
-sleep .1
+sleep .5
 
 # chequea que el sku indicado en el disco target coincida con el configurado
 imageSkuConfig=$(cat /home/partimag/image.sku.cfg) > /dev/null 2>&1
@@ -75,18 +75,25 @@ if [ $imageSkuConfig = $imageSkuDisk ]
 		printf "${m_pass}\n"
 		sku_check=true
 	else
-		printf "${m_fail}\n"
-        printf "[${m_info}] Image deploy canceled due SKU unmatching. Press any key to system shutdown.\n"
-        read -s -n 1 -p "" null
-        shutdown now
+        printf "${m_fail}\n"
+        if [ -e /home/targetDisk/image.sku.force ]
+            then
+                printf "[${m_warn}] FORCE SKU PASS OPTION FOUND ALL DATA IN TARGET DISK WILL BE DELETED.\n"
+                sleep 10
+                sku_check=true
+            else
+                printf "[${m_info}] Image deploy canceled due SKU unmatching. Press any key to system shutdown.\n"
+                read -s -n 1 -p "" null
+                shutdown now
+        fi
 fi
 
-sleep .1
+sleep .5
 
 # desmonta el disco donde se encuentra el flag del running
 sudo umount /home/targetDisk > /dev/null 2>&1
 
-sleep .1
+sleep .5
 
 # valida que la bateria esté conectada
 printf "[${m_warn}] Validación alimentación eléctrica"
@@ -138,7 +145,7 @@ if [ $sku_check == "true" ]
                     error_counter=$((error_counter+1))
             fi
             
-            sleep .1
+            sleep .5
 
             # validafion finalizacion del proceso Clonezilla
             printf "[${m_warn}] Finalización del proceso Clonezilla"
@@ -157,7 +164,7 @@ if [ $sku_check == "true" ]
                     error_counter=$((error_counter+1))
             fi
             
-            sleep .1
+            sleep .5
 
             # validafion errores del proceso Clonezilla
             printf "[${m_warn}] Control de errores en proceso Clonezilla"
@@ -176,7 +183,7 @@ if [ $sku_check == "true" ]
                     error_counter=$((error_counter+1))
             fi
             
-            sleep .1
+            sleep .5
     
         # valida si hay un error y muestra el mensaje correspondiente
         printf "[${m_info}] Validaciones no superadas = ${error_counter}.\n"
