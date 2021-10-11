@@ -7,7 +7,7 @@ m_warn='\033[1;33m WARN \033[0m' # ${m_warn}
 m_info='\033[1;37m INFO \033[0m' # ${m_info}
 
 # presentación
-printf "\033[1;36m" && figlet -c -f small IMAGE - DEPLOYER && printf "\033[0m \n"
+printf "\033[1;36m" && figlet -f small IMAGE - DEPLOYER && printf "\033[0m \n"
 
 # directorio de trabajo
 SCRIPT=$(readlink -f $0);
@@ -112,7 +112,7 @@ bateria=$(cat /sys/class/power_supply/ADP1/online) #bateria=$(cat /sys/class/pow
 if [ $bateria != 1 ]
     then
         printf "${m_fail}\n"
-        printf "\033[5;31m" && figlet -c -f small FALTA CARGADOR && printf "\033[0m \n"
+        printf "\033[5;31m" && figlet -f small FALTA CARGADOR && printf "\033[0m \n"
         while [ $bateria != 1 ]
         do
             sleep 1
@@ -200,9 +200,9 @@ if [ $sku_check == "true" ]
         printf "[${m_info}] Validaciones no superadas = ${error_counter}.\n"
         if [ $error_counter != 0 ]
             then
-                printf "\n\033[5;31m" && figlet -c -f big F A I L && printf "\033[0m \n"
+                printf "\n\033[5;31m" && figlet -f big F A I L && printf "\033[0m \n"
             else
-                printf "\n\033[5;32m" && figlet -c -f big P A S S && printf "\033[0m \n"
+                printf "\n\033[5;32m" && figlet -f big P A S S && printf "\033[0m \n"
         fi
 
         #apagado

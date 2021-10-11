@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # mensaje
-printf "\033[5;33m" && figlet -c -f small CLONANDO... && printf "\033[0m \n"
+printf "\033[5;33m" && figlet -f small CLONANDO... && printf "\033[0m \n"
 
 # parametros de clonado
 printf " --- IMAGE ${1} \n --- TARGET ${2} \n\n"
