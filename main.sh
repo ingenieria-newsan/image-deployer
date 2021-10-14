@@ -109,15 +109,15 @@ sleep .5
 # valida que la bateria esté conectada
 printf "[${m_warn}] Validación alimentación eléctrica"
 power_supply_dir=$(cat $dir_base/config/power.folder.cfg)
-power_supply=$(cat $power_supply_dir) 
+power_supply=$(cat $power_supply_dir)
 if [ $power_supply != 1 ]
     then
         printf "${m_fail}\n"
         printf "\033[5;31m" && figlet -f small FALTA CARGADOR && printf "\033[0m \n"
-        while [ $bateria != 1 ]
+        while [ $power_supply != 1 ]
         do
             sleep 1
-            bateria=$(cat /sys/class/power_supply/ADP1/online)
+            power_supply=$(cat $power_supply_dir)
         done
     else
         printf "${m_pass}\n"
