@@ -108,8 +108,9 @@ sleep .5
 
 # valida que la bateria esté conectada
 printf "[${m_warn}] Validación alimentación eléctrica"
-bateria=$(cat /sys/class/power_supply/ADP1/online) #bateria=$(cat /sys/class/power_supply/ACAD/online)
-if [ $bateria != 1 ]
+ADP1=$(cat /sys/class/power_supply/ADP1/online) 
+ACAD=$(cat /sys/class/power_supply/ACAD/online)
+if [ $ADP1 != 1 ] && [ $ACAD != 1 ]
     then
         printf "${m_fail}\n"
         printf "\033[5;31m" && figlet -f small FALTA CARGADOR && printf "\033[0m \n"
@@ -147,7 +148,7 @@ if [ $sku_check == "true" ]
 
             # validación de particiones
             printf "[${m_warn}] Particiones en disco de destino"
-            if [ $(grep -c $targetDisk /proc/partitions) = 5 ]
+            if [ $(grep -c $targetDisk /proc/partitions) = 6 ]
                 then
                     printf "${m_pass}\n"
                     error_counter=$((error_counter-1))
