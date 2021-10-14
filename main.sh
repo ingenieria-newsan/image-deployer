@@ -46,9 +46,9 @@ sleep .5
 # correccion de nombre para discos nvme
 if [ $targetDisk == "nvme0n1" ]
     then
-        targetDiskPartition3=nvme0n1p3
+        targetDiskPartition1=nvme0n1p1
     else
-        targetDiskPartition3="$targetDisk"3
+        targetDiskPartition1="$targetDisk"1
 fi
 printf "[${m_info}] Se aplicó corrección de nombre a la partición $targetDiskPartition3.\n"
 
@@ -58,7 +58,7 @@ sleep .5
 printf "[${m_info}] Montando particiones de destino.\n"
 sudo umount /home/targetDisk > /dev/null 2>&1
 sudo mkdir /home/targetDisk > /dev/null 2>&1
-sudo mount /dev/${targetDiskPartition3} /home/targetDisk
+sudo mount /dev/${targetDiskPartition1} /home/targetDisk
 
 sleep .5
 
@@ -108,9 +108,9 @@ sleep .5
 
 # valida que la bateria esté conectada
 printf "[${m_warn}] Validación alimentación eléctrica"
-ADP1=$(cat /sys/class/power_supply/ADP1/online) 
-ACAD=$(cat /sys/class/power_supply/ACAD/online)
-if [ $ADP1 != 1 ] && [ $ACAD != 1 ]
+power_supply_dir=$(cat $dir_base/config/power.folder.cfg)
+power_supply=$(cat $power_supply_dir) 
+if [ $power_supply != 1 ]
     then
         printf "${m_fail}\n"
         printf "\033[5;31m" && figlet -f small FALTA CARGADOR && printf "\033[0m \n"

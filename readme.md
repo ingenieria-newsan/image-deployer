@@ -26,6 +26,7 @@ Siga los siguientes pasos para instalar el sistema:
 Modifique los siguiente archivos para configurar la herramienta:
 
 - `/home/partimag/image.target.cfg` establece el nombre del dispositivo de destino para la imagen.
-- `/home/partimag/congig/image.sku.cfg` establece el SKU que debe conincidir con el indicado en `C:\image.sku.cfg` en el raiz del disco de destino.
+- `/home/partimag/congig/image.sku.cfg` establece el SKU que debe conincidir con el indicado en `image.sku.cfg` en el raiz de la partición 1 (EFI) del disco de destino.
 - `/home/partimag/congig/image.folder.cfg` establece el nombre de la imagen que se grabará.
 - Cree el archivo `/home/partimag/image.sku.force.cfg` para forzar el despliegue de la imagen aunque no se pueda validad el SKU.
+- `/config/power.folder.cfg` establece el directorio con el estado de conexion de la fuente de alimentación.
